@@ -4,6 +4,8 @@ body {
 .slider {
   position: relative;
   height: 300px;
+  width: 600px;
+  
 }
 .slider__items {
   height: 100%;
