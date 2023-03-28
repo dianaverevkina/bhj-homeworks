@@ -1,12 +1,13 @@
 let counter = document.getElementById('clicker__counter');
-let clicker__counter = +(counter.textContent);
 let cookie = document.getElementById('cookie');
-let clicker__speed = document.getElementById('clicker__speed');
-let start = new Date();
+let clickerSpeed = document.getElementById('clicker__speed');
+
+let start;
 
 cookie.onclick = () => {
-  clicker__counter++;
-  counter.innerHTML = clicker__counter;
-  clicker__speed.innerHTML = +((clicker__counter/((new Date() - start)/1000)).toFixed(2));
-  clicker__counter % 2 !== 0 ? cookie.width = '230' : cookie.width = '200';
+  if (+counter.textContent > 0) {
+    clickerSpeed.innerHTML = +((1000/(new Date() - start)).toFixed(2));
+  }
+  cookie.width = ++counter.textContent % 2 !== 0 ?  '230' : '200';
+  start = new Date();
 }
