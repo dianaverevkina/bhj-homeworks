@@ -1,25 +1,26 @@
 let arrowLeft = document.querySelector('.slider__arrow_prev');
 let arrowRight = document.querySelector('.slider__arrow_next');
 let slides = [...document.querySelectorAll('.slider__item')];
-let currentSlide = 0;
 
 let dots = [...document.querySelectorAll('.slider__dot')];
 
 //Показ слайда
-function showSlide(numberOfSlide) {
-  slides[currentSlide].classList.remove('slider__item_active');
-  currentSlide = (numberOfSlide + slides.length) % slides.length;
-  slides[currentSlide].classList.add('slider__item_active');
+function showSlide(numberOfSlide, shiftDirection) {
+  slides[numberOfSlide].classList.remove('slider__item_active');
+  numberOfSlide = (numberOfSlide + shiftDirection + slides.length) % slides.length;
+  slides[numberOfSlide].classList.add('slider__item_active');
 }
 //Переключение слайдера вправо
 arrowRight.onclick = () => {
-  showSlide(currentSlide + 1);
+  let currentSlide = slides.findIndex(slide => slide.className === 'slider__item slider__item_active');
+  showSlide(currentSlide, 1);
   moveDot(currentSlide);
 }
 
 //Переключение слайдера влево
 arrowLeft.onclick = () => {
-  showSlide(currentSlide - 1);
+  let currentSlide = slides.findIndex(slide => slide.className === 'slider__item slider__item_active');
+  showSlide(currentSlide, (-1));
   moveDot(currentSlide);
 }
 
@@ -34,6 +35,7 @@ function moveDot(dotNav) {
 // Смена слайда при клике по точке
 dots.forEach((dot, index) => {
   dot.onclick = () => {
+    let currentSlide = slides.findIndex(slide => slide.className === 'slider__item slider__item_active');
     slides[currentSlide].classList.remove('slider__item_active');
     currentSlide = index;
     moveDot(currentSlide);

@@ -1,18 +1,18 @@
-let modal_main = document.getElementById('modal_main');
-let modal_success = document.getElementById('modal_success');
-let modals__close = Array.from(document.querySelectorAll('.modal__close.modal__close_times'));
-let show__success = document.querySelector('.show-success');
+let modalMain = document.getElementById('modal_main');
+let modalSuccess = document.getElementById('modal_success');
+let modalsClose = Array.from(document.querySelectorAll('.modal__close.modal__close_times'));
+let showSuccess = document.querySelector('.show-success');
 
 
-modal_main.classList.add('modal_active'); 
+modalMain.classList.add('modal_active'); 
 
-modals__close.forEach(item => {
+modalsClose.forEach(item => {
   item.onclick = () => {
     item.closest('.modal').classList.remove('modal_active');
   }
 })
 
 show__success.onclick = () => {
-  modal_success.classList.add('modal_active');
-  modal_main.classList.remove('modal_active');
+  modalSuccess.classList.add('modal_active');
+  modalMain.classList.remove('modal_active');
 }

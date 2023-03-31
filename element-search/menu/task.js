@@ -1,10 +1,20 @@
-let menu__links = Array.from(document.querySelectorAll('.menu__link'));
-let subMenus = Array.from(document.querySelectorAll('.menu_sub'));
 
-menu__links.forEach( link => {
-  link.onclick = () => {
-    subMenus.forEach(subMenu => subMenu.classList.remove('menu_active'));
-    link.nextElementSibling.classList.add('menu_active');
-    return false;
-  }
+let menuElement = document.querySelector('.menu');
+let menuLinks = Array.from(menuElement.querySelectorAll('.menu__link'));
+let subMenus = Array.from(menuElement.querySelectorAll('.menu_sub'));
+console.log(menuLinks);
+
+menuLinks.forEach( link => {
+    link.onclick = () => {
+      let subMenu = link.nextElementSibling;
+      if (!link.nextElementSibling) return;
+      if (subMenu.classList.contains('menu_active')) {
+        subMenu.classList.remove('menu_active');
+        return;
+      }
+      subMenus.forEach(subMenu => subMenu.classList.remove('menu_active'));
+      subMenu.classList.add('menu_active');
+      return false; 
+    }
 })
+
