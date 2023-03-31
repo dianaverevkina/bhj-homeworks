@@ -1,6 +1,7 @@
-let dropdownChoice = document.querySelector('.dropdown__value');
-let dropdownList = document.querySelector('.dropdown__list');
-let dropdownItems = [...document.querySelectorAll('.dropdown__item')];
+let dropdown = document.querySelector('.dropdown');
+let dropdownChoice = dropdown.querySelector('.dropdown__value');
+let dropdownList = dropdown.querySelector('.dropdown__list');
+let dropdownItems = [...dropdown.querySelectorAll('.dropdown__item')];
 
 
 dropdownChoice.addEventListener('click', function() {
