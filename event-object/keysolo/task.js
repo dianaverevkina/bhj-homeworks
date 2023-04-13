@@ -31,7 +31,6 @@ class Game {
   }
 
   startTimer() {
-    debugger;
     clearInterval(this.timerId);
     this.timerId = setInterval(()=> {
       if (--this.timer.textContent === 0) {
