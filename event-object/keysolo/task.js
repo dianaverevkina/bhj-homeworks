@@ -31,8 +31,12 @@ class Game {
   }
 
   startTimer() {
+    debugger;
+    clearInterval(this.timerId);
     this.timerId = setInterval(()=> {
-      if (--this.timer.textContent === 0) this.fail();
+      if (--this.timer.textContent === 0) {
+        this.fail();
+      }
     }, 1000);
   }
 
@@ -47,22 +51,22 @@ class Game {
       return;
     }
 
+    clearInterval(this.timerId);
+
     if (++this.winsElement.textContent === 10) {
       alert('Победа!');
-      clearInterval(this.timerId);
       this.reset();
     }
-    
-    clearInterval(this.timerId);  
+
     this.setNewWord();
   }
 
   fail() {
-    if (++this.lossElement.textContent === 5 || this.timer.textContent === 0) {
+    if (++this.lossElement.textContent === 5) {
       alert('Вы проиграли!');
-      clearInterval(this.timerId);
       this.reset();
     }
+    clearInterval(this.timerId);
     this.setNewWord();
   }
 
