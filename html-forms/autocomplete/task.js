@@ -57,7 +57,6 @@ class Autocomplete {
   }
  
   renderMatches( matches ) {
-    debugger;
     const html = matches.map( item => `
     	<li>
         <span class="autocomplete__item"

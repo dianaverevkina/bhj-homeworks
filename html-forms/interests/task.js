@@ -52,7 +52,11 @@ function changeParentCheck( el ) {
  
 	parentCheck.checked = selectedChildren.length === children.length;
 	parentCheck.indeterminate = !parentCheck.checked && selectedChildren.length;
+
+  changeParentCheck(parent);
 }
+
+
 
 
 
