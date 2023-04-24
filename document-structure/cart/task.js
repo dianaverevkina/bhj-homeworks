@@ -1,8 +1,6 @@
 const cart = document.querySelector('.cart');
 const savedCart = localStorage.getItem('myCart');
 
-const cartContainer = cart.querySelector('.cart__products');
-
 if (savedCart) showSavedCart();
 
 //Показать ранее добавленные товары 
@@ -14,6 +12,8 @@ function showSavedCart() {
 
   cartProductDeletes.forEach(productDelete => productDelete.addEventListener('click', deleteCartProduct));
 }
+
+const cartContainer = cart.querySelector('.cart__products');
 
 //Удалить товар из корзины
 function deleteCartProduct() {
