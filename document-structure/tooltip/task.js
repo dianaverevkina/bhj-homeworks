@@ -3,22 +3,21 @@ const hasTooltips = document.querySelectorAll('.has-tooltip');
 function createTooltipElement(el) {
   const tooltip = document.createElement('div');
   tooltip.classList.add('tooltip');
-  tooltip.dataset.position = '';
-
-  let coords = getCoords(el);
-  
-  tooltip.style.left = coords.left + 'px';
-  tooltip.style.top = coords.top + el.offsetHeight + 'px';
-
   tooltip.innerHTML = el.title;
   el.after(tooltip);
 
-  return tooltip;
-}
+  let coords = el.getBoundingClientRect();
+  
+  if (coords.top < 30) {
+  tooltip.style.left = coords.left + 'px';
+  tooltip.style.top = coords.top + el.offsetHeight + 'px';
+  } else {
+    tooltip.style.left = coords.left + 'px';
+    tooltip.style.top = coords.top +'px';
+    tooltip.dataset.position = 'top';
+  }
 
-function getCoords(el) {
-  const { top, left} = el.getBoundingClientRect();
-  return { top, left };
+  return tooltip;
 }
 
 function showTooltip(e) {
