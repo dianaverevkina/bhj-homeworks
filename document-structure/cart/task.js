@@ -1,17 +1,28 @@
 const cart = document.querySelector('.cart');
 const savedCart = localStorage.getItem('myCart');
 
-if (savedCart) {
-  cart.innerHTML = savedCart;
+const cartContainer = cart.querySelector('.cart__products');
 
+if (savedCart) showSavedCart();
+
+//Показать ранее добавленные товары 
+function showSavedCart() {
+  cart.innerHTML = savedCart;
   const cartProductDeletes = cart.querySelectorAll('.cart__product-delete');
+
+  if (cartProductDeletes.length === 0) return;
+
   cartProductDeletes.forEach(productDelete => productDelete.addEventListener('click', deleteCartProduct));
 }
 
-//Удалить продукт из корзины
+//Удалить товар из корзины
 function deleteCartProduct() {
   const cartProduct = this.closest('.cart__product');
   cartProduct.remove();
+
+  if(cartContainer.innerHTML.trim() === '') {
+    cart.querySelector('.cart__title').remove();
+  }
 
   storeCart();
 }
@@ -55,8 +66,6 @@ changeProductQuantity();
 
 const productAddBtns = products.querySelectorAll('.product__add');
 
-const cartContainer = cart.querySelector('.cart__products');
-
 //Найти товар в корзине
 function findCartProduct(el) {
   return [...cartContainer.querySelectorAll('.cart__product')].filter(cartProduct => cartProduct.dataset.id === el.dataset.id)[0];
@@ -77,14 +86,21 @@ function addToCart() {
     return;
   }
 
-  cartContainer.innerHTML += `
+  let cartTitle = cart.querySelector('.cart__title');
+
+  if (!cartTitle) {
+    cart.insertAdjacentHTML('afterbegin', '<div class="cart__title">Корзина</div>');
+  }
+
+  cartContainer.insertAdjacentHTML('beforeend', `
     <div class="cart__product" data-id=${product.dataset.id}>
       <img class="cart__product-image" src=${src}>
       <div class="cart__product-count">${value}</div>
       <div class="cart__product-delete">
         <img class="cart__product-delete-image" src="cross.png">
       </div>
-    </div>`;
+    </div>
+  `);
 
   const addedNewCartProduct = findCartProduct(product);
   createAnimation(product, addedNewCartProduct);
@@ -145,6 +161,8 @@ function animate({duration, draw}) {
     }
   });
 }
+
+// localStorage.clear()
 
 
 

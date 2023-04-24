@@ -23,7 +23,6 @@ body {
 
 .cart__product-image {
   border-radius: 6px;
-  /* margin-right: 10px; */
   width: 100px;
   height: 100px;
   object-fit: contain;
@@ -42,6 +41,10 @@ body {
   max-width: 100%;
 }
 
+.cart__title_hidden {
+  display: none;
+}
+
 .product {
   display: flex;
   flex-wrap: wrap;
@@ -55,12 +58,12 @@ body {
 .product__pic {
   width: 100px;
   position: relative;
+  margin: 0 20px 0 0;
 } 
 
 .product__image {
   position: absolute;
   max-width: 100%;
-  /* width: 100px; */
   object-fit: contain;
 }
 
