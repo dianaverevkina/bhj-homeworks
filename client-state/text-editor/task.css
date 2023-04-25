@@ -7,4 +7,11 @@ textarea {
   font-family: Golos, Arial, sans-serif;
   border: 1px solid #e2e2e2;
   box-sizing: border-box;
+  font-size: 1.1rem;
+}
+
+.button-reset {
+  background-color: #1c58b1;
+  border-radius: 10px;
+  font-size: 1.1rem;
 }
