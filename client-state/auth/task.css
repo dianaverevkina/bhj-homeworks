@@ -45,3 +45,29 @@
   display: block;
   text-align: center;
 }
+
+.logout {
+  display: none;
+}
+
+.logout_active {
+  display: block;
+  margin: 0 0 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout__btn {
+  display: inline-block;
+  color: #fff;
+  background-color: #06f;
+  padding: 0.6em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout__btn:hover {
+  background-color: #1d4a8f;
+  transition: background-color 0.3s;
+}
