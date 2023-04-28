@@ -23,7 +23,3 @@
 .tooltip_active {
   display: block;
 }
-
-.tooltip[data-position = 'top'] {
-  transform: translateY(-100%);
-}
